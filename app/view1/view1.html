@@ -1,4 +1,25 @@
 <div ng-controller="View1Ctrl">
-  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-  <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+  {{current_master}} <br>
+  <div class="col-md-4">
+    <div id="gaugeChartCpu" class="epoch gauge-medium center-block" gauge-value val="current_master_stats.cpus_percent"></div>
+    <h4 class="text-center">CPU</h4>
+  </div>
+  <div class="col-md-4">
+    <div id="gaugeChartMem" class="epoch gauge-medium center-block" gauge-value val="current_master_stats.mem_percent"></div>
+    <h4 class="text-center">Mem</h4>
+  </div>
+  <div class="col-md-4">
+    <div id="gaugeChartDisk" class="epoch gauge-medium center-block" gauge-value val="current_master_stats.disk_percent"></div>
+    <h4 class="text-center">Disk</h4>
+  </div>
+  <div class="col-md-12">
+    <div id="barChartTasks" class="epoch center-block" style="width: 1200px;
+        height: 400px" bar-chart val="running_frameworks"></div>
+  </div>
+  <div class="col-md-12">
+  <ul>
+      <li ng-repeat="f in frameworks">{{f}} {{
+      running_frameworks[f]['tasks'].length}}</li>
+  </ul>
+  </div>
 </div>
